@@ -1,6 +1,6 @@
-# Verity design: Evaluation plan
+# Verity RAG design: Evaluation plan
 
-Part of the [Verity design](../design.md). Section numbers (§) match the index and the GitHub issues.
+Part of the [Verity RAG design](../design.md). Section numbers (§) match the index and the GitHub issues.
 
 ---
 

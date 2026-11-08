@@ -67,20 +67,20 @@ Eval run tokens (generator / judge):
 <!-- [REQUIRED] Tick all that apply -->
 
 <!-- Use "x" to check. -->
-<!-- example: - [x] I've followed the [CONTRIBUTING.md](https://github.com/dileepadev/verity/blob/main/CONTRIBUTING.md). -->
+<!-- example: - [x] I've followed the [CONTRIBUTING.md](https://github.com/dileepadev/verity-rag/blob/main/CONTRIBUTING.md). -->
 
-- [ ] I've followed the [CONTRIBUTING.md](https://github.com/dileepadev/verity/blob/main/CONTRIBUTING.md).
-- [ ] I've followed the [Commit Message Guidelines](https://github.com/dileepadev/verity/blob/main/COMMIT_MESSAGE_GUIDELINES.md).
-- [ ] I've followed the [Branch Naming Guidelines](https://github.com/dileepadev/verity/blob/main/BRANCH_NAMING_GUIDELINES.md).
-- [ ] I agree to follow the [Pull Request Guidelines](https://github.com/dileepadev/verity/blob/main/PULL_REQUEST_GUIDELINES.md).
-- [ ] I agree to follow the [Code of Conduct](https://github.com/dileepadev/verity/blob/main/CODE_OF_CONDUCT.md).
+- [ ] I've followed the [CONTRIBUTING.md](https://github.com/dileepadev/verity-rag/blob/main/CONTRIBUTING.md).
+- [ ] I've followed the [Commit Message Guidelines](https://github.com/dileepadev/verity-rag/blob/main/COMMIT_MESSAGE_GUIDELINES.md).
+- [ ] I've followed the [Branch Naming Guidelines](https://github.com/dileepadev/verity-rag/blob/main/BRANCH_NAMING_GUIDELINES.md).
+- [ ] I agree to follow the [Pull Request Guidelines](https://github.com/dileepadev/verity-rag/blob/main/PULL_REQUEST_GUIDELINES.md).
+- [ ] I agree to follow the [Code of Conduct](https://github.com/dileepadev/verity-rag/blob/main/CODE_OF_CONDUCT.md).
 - [ ] `make lint test` passes locally.
 - [ ] New pipeline behavior has a unit test, a config flag and an ablation entry.
 - [ ] No provider URLs, model IDs or secrets are hardcoded outside `configs/` and `.env`.
 - [ ] No human-labeled data (`evals/datasets/`, `evals/judges/calibration/`) is changed, or this PR only contains labels written by hand by the maintainer.
 - [ ] `evals/thresholds.yaml` is not weakened, or an ADR explains why.
 - [ ] Significant design decisions are recorded as an ADR in `docs/adr/`.
-- [ ] Documentation and [CHANGELOG.md](https://github.com/dileepadev/verity/blob/main/CHANGELOG.md) have been updated where necessary.
+- [ ] Documentation and [CHANGELOG.md](https://github.com/dileepadev/verity-rag/blob/main/CHANGELOG.md) have been updated where necessary.
 - [ ] No personal data in code, fixtures, prompts or eval examples.
 - [ ] If a coding agent helped, I can explain every line, and notable sessions are logged in `docs/build-log.md`.
 

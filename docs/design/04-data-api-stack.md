@@ -1,6 +1,6 @@
-# Verity design: Data model, API and tech stack
+# Verity RAG design: Data model, API and tech stack
 
-Part of the [Verity design](../design.md). Section numbers (§) match the index and the GitHub issues.
+Part of the [Verity RAG design](../design.md). Section numbers (§) match the index and the GitHub issues.
 
 ---
 
@@ -73,7 +73,7 @@ CREATE TABLE feedback (
 );
 ```
 
-**Database roles (least privilege):** `verity_app` (the API) can `SELECT` on `documents`/`chunks` and `INSERT` on `queries`/`feedback`. `verity_ingest` (the `make ingest` CLI) can write `documents`/`chunks`. `verity_eval` (CI) can only `SELECT` on `documents`/`chunks`. Migrations run as the owner role only. Use Alembic for migrations. Eval results are files in `evals/reports/`, not database rows.
+**Database roles (least privilege):** `verity_rag_app` (the API) can `SELECT` on `documents`/`chunks` and `INSERT` on `queries`/`feedback`. `verity_rag_ingest` (the `make ingest` CLI) can write `documents`/`chunks`. `verity_rag_eval` (CI) can only `SELECT` on `documents`/`chunks`. Migrations run as the owner role only. Use Alembic for migrations. Eval results are files in `evals/reports/`, not database rows.
 
 ---
 

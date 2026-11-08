@@ -1,10 +1,10 @@
 # Security Policy
 
-The [Verity](https://github.com/dileepadev/verity) project team takes security issues very seriously. We appreciate your efforts to responsibly disclose any security vulnerabilities you find.
+The [Verity RAG](https://github.com/dileepadev/verity-rag) project team takes security issues very seriously. We appreciate your efforts to responsibly disclose any security vulnerabilities you find.
 
 ## Supported Versions
 
-Verity is in early development. Security fixes are made on `main` and included in the next release. Only the latest release and the live demo receive fixes.
+Verity RAG is in early development. Security fixes are made on `main` and included in the next release. Only the latest release and the live demo receive fixes.
 
 ## Reporting a Vulnerability
 
@@ -21,7 +21,7 @@ We will respond to your email as soon as possible and work with you to address a
 
 ## Scope
 
-Verity is a public, read-only question-answering service over public documents. The threat model and the mapping to the OWASP Top 10 for LLM Applications (2025) are in `docs/security.md` (planned in [#29](https://github.com/dileepadev/verity/issues/29)) and [docs/design.md §14](docs/design/07-security-and-privacy.md#14-security).
+Verity RAG is a public, read-only question-answering service over public documents. The threat model and the mapping to the OWASP Top 10 for LLM Applications (2025) are in `docs/security.md` (planned in [#29](https://github.com/dileepadev/verity-rag/issues/29)) and [docs/design.md §14](docs/design/07-security-and-privacy.md#14-security).
 
 **In scope:**
 
@@ -35,7 +35,7 @@ Verity is a public, read-only question-answering service over public documents. 
 **Out of scope (please use a public issue instead):**
 
 - Wrong, incomplete or badly cited answers with no security impact: use the **Answer Quality** issue template
-- Jailbreaks that only make the model produce off-topic text: Verity has no tools or actions, so report these as answer quality issues
+- Jailbreaks that only make the model produce off-topic text: Verity RAG has no tools or actions, so report these as answer quality issues
 - Findings that need denial-of-service or load testing against the live demo
 
 Please don't run automated scanners or load tests against the live demo, and don't include real personal data in your reports.
@@ -62,4 +62,4 @@ Maintainers are responsible for the security of the project. This includes:
 - We will release a fix as soon as possible, depending on the complexity of the issue.
 - We will communicate the vulnerability and any patches or workarounds to our users.
 
-Thank you for your help in making the [Verity](https://github.com/dileepadev/verity) project a more secure place.
+Thank you for your help in making the [Verity RAG](https://github.com/dileepadev/verity-rag) project a more secure place.

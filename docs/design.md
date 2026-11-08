@@ -1,10 +1,10 @@
-# Verity: Evaluation-Driven RAG with Page-Level Citations
+# Verity RAG: Evaluation-Driven Question Answering with Page-Level Citations
 
-> **Ask questions about long, messy official documents and get answers you can check. Every claim cites a page. When the documents don't answer the question, Verity says "I don't have that information."**
+> **Ask questions about long, messy official documents and get answers you can check. Every claim cites a page. When the documents don't answer the question, Verity RAG says "I don't have that information."**
 
 | | |
 | --- | --- |
-| **Repository** | `verity` |
+| **Repository** | `verity-rag` |
 | **GitHub description** | Evaluation-driven RAG over messy real-world PDFs: hybrid search (keyword + vectors), reranking, page-level citations, calibrated abstention, LLM-as-judge evals gated in CI, OpenTelemetry tracing. Python · FastAPI · PostgreSQL/pgvector · Next.js |
 | **GitHub topics** | `rag` `retrieval-augmented-generation` `llm` `llm-evaluation` `evals` `hybrid-search` `pgvector` `reranking` `fastapi` `nextjs` `opentelemetry` `langfuse` `docling` `generative-ai` `ai-engineering` `python` `typescript` |
 
@@ -56,7 +56,7 @@ Each section lives in its own file under [design/](design/). Section numbers (§
 
 ## 1. Scope at a glance
 
-| Area | What Verity covers |
+| Area | What Verity RAG covers |
 | --- | --- |
 | RAG pipeline | Parsing, structure-aware chunking, hybrid retrieval, reranking, grounded generation |
 | Evaluation | A golden set, a calibrated LLM judge, [ablations](design/05-evaluation.md#124-ablation-plan) (one-change-at-a-time experiments, E0–E9), a CI gate and an error analysis |

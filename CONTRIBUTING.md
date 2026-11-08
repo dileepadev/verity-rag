@@ -1,27 +1,27 @@
-# Contributing to Verity
+# Contributing to Verity RAG
 
-Thank you for your interest in contributing to [Verity](https://github.com/dileepadev/verity)! We welcome contributions, including bug fixes, retrieval and evaluation improvements, documentation improvements, and reports of wrong or badly cited answers.
+Thank you for your interest in contributing to [Verity RAG](https://github.com/dileepadev/verity-rag)! We welcome contributions, including bug fixes, retrieval and evaluation improvements, documentation improvements, and reports of wrong or badly cited answers.
 
-Verity is evaluation-driven: every change to the pipeline has to show its effect on the golden set. Read [docs/design.md](docs/design.md) and [docs/engineering-standards.md](docs/engineering-standards.md) before starting a larger change.
+Verity RAG is evaluation-driven: every change to the pipeline has to show its effect on the golden set. Read [docs/design.md](docs/design.md) and [docs/engineering-standards.md](docs/engineering-standards.md) before starting a larger change.
 
 > [!Note]
-> Verity is in early development. The Python tooling (`uv`, `make` targets, CI) is being set up in [#4](https://github.com/dileepadev/verity/issues/4); until it lands, some commands below won't work yet.
+> Verity RAG is in early development. The Python tooling (`uv`, `make` targets, CI) is being set up in [#4](https://github.com/dileepadev/verity-rag/issues/4); until it lands, some commands below won't work yet.
 
 ## Getting Started
 
 1. **Find or open an issue**  
-   Every task starts from a GitHub issue with acceptance criteria. Check the [development plan (#1)](https://github.com/dileepadev/verity/issues/1) for open tasks, or open a new issue using one of the [issue templates](.github/ISSUE_TEMPLATE). Comment on the issue before starting larger work.
+   Every task starts from a GitHub issue with acceptance criteria. Check the [development plan (#1)](https://github.com/dileepadev/verity-rag/issues/1) for open tasks, or open a new issue using one of the [issue templates](.github/ISSUE_TEMPLATE). Comment on the issue before starting larger work.
 
 2. **Fork the repository**  
    Fork this repository to your GitHub account. This creates a copy of the repository in your account, allowing you to make changes without affecting the original repository.  
-   To fork the repository, click the **Fork** button in the top right corner of this page or click [here to fork the repository](https://github.com/dileepadev/verity/fork).
+   To fork the repository, click the **Fork** button in the top right corner of this page or click [here to fork the repository](https://github.com/dileepadev/verity-rag/fork).
 
 3. **Clone your fork and set up**  
    Clone your forked repository and install the development environment (Python 3.12, [uv](https://docs.astral.sh/uv/), Docker):
 
    ```bash
-   git clone https://github.com/<your-username>/verity.git
-   cd verity
+   git clone https://github.com/<your-username>/verity-rag.git
+   cd verity-rag
    cp .env.example .env   # add your own API keys; never commit .env
    make setup             # install dependencies and pre-commit hooks
    make up                # start Postgres + pgvector
@@ -78,7 +78,7 @@ Verity is evaluation-driven: every change to the pipeline has to show its effect
 - **Coding agents:** you may use them, but you must be able to explain every line you submit. Agents follow [AGENTS.md](AGENTS.md).
 - Update documentation and [CHANGELOG.md](CHANGELOG.md) where necessary, and keep your pull request focused on one issue.
 - Refer to the following templates and guidelines before submitting your changes:
-  - [verity/](./) - Root directory of the repository
+  - [verity-rag/](./) - Root directory of the repository
     - [.github/](./.github) - GitHub-specific files (workflows, templates, etc.)
       - [ISSUE_TEMPLATE/](./.github/ISSUE_TEMPLATE) - Contains all issue templates
         - [answer_quality.md](./.github/ISSUE_TEMPLATE/answer_quality.md) - Template for reporting wrong, unsupported or badly cited answers
@@ -109,6 +109,6 @@ Read the full Contributor Covenant Code of Conduct in the [CODE_OF_CONDUCT.md](C
 
 ## Contact
 
-If you have any questions or suggestions regarding Verity, feel free to open an issue or submit a pull request in this repository.
+If you have any questions or suggestions regarding Verity RAG, feel free to open an issue or submit a pull request in this repository.
 
 You can also reach me via email at: **<contact@dileepa.dev>**

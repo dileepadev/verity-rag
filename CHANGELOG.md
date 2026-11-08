@@ -62,5 +62,5 @@ Golden set: golden_vN (test split, N questions) · Generator: <model ID> · Judg
 <!-- v0.5.0 -->
 <!-- v0.1.0 -->
 
-[Unreleased]: https://github.com/dileepadev/verity/commits/main
-[v0.1.0]: https://github.com/dileepadev/verity/commits/v0.1.0
+[Unreleased]: https://github.com/dileepadev/verity-rag/commits/main
+[v0.1.0]: https://github.com/dileepadev/verity-rag/commits/v0.1.0

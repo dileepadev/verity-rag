@@ -1,6 +1,6 @@
-# Verity design: Security and privacy
+# Verity RAG design: Security and privacy
 
-Part of the [Verity design](../design.md). Section numbers (§) match the index and the GitHub issues.
+Part of the [Verity RAG design](../design.md). Section numbers (§) match the index and the GitHub issues.
 
 ---
 
@@ -14,7 +14,7 @@ Part of the [Verity design](../design.md). Section numbers (§) match the index 
 
 ### 14.2 OWASP Top 10 for LLM Applications (2025) mapping
 
-| Risk | How it applies | Controls in Verity |
+| Risk | How it applies | Controls in Verity RAG |
 | --- | --- | --- |
 | LLM01 Prompt Injection | Users try to override rules; a document contains "ignore previous instructions…" | Instruction hierarchy in the system prompt; sources wrapped as clearly delimited data; **no tools or actions, so the blast radius is small**; injection test set (20 cases, including a planted "poisoned" document in the test fixture corpus) |
 | LLM02 Sensitive Information Disclosure | Users may type personal data; system prompt or keys could leak | No secrets in prompts; PII redaction before storage; public corpus only |

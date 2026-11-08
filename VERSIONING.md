@@ -26,7 +26,7 @@ Version numbers follow the structure:
 - **MINOR** – Backward-compatible functionality, pipeline improvements and new features
 - **PATCH** – Backward-compatible bug fixes and small improvements
 
-While Verity is below `1.0.0`, any release may contain breaking changes.
+While Verity RAG is below `1.0.0`, any release may contain breaking changes.
 
 ### Examples
 
@@ -42,22 +42,22 @@ While Verity is below `1.0.0`, any release may contain breaking changes.
 
 ## Planned Releases
 
-Each phase of the [development plan](https://github.com/dileepadev/verity/issues/1) ends with a tagged release:
+Each phase of the [development plan](https://github.com/dileepadev/verity-rag/issues/1) ends with a tagged release:
 
-| Version  | Milestone           | Phase                                                                     |
-| -------- | ------------------- | ------------------------------------------------------------------------- |
-| `v0.1.0` | M1: baseline report | [Phase 1 · Measure first](https://github.com/dileepadev/verity/issues/8)  |
-| `v0.5.0` | M2: quality targets | [Phase 2 · Make it good](https://github.com/dileepadev/verity/issues/15)  |
-| `v1.0.0` | M3: deployed v1.0   | [Phase 3 · Make it real](https://github.com/dileepadev/verity/issues/24)  |
+| Version  | Milestone           | Phase                                                                        |
+| -------- | ------------------- | ---------------------------------------------------------------------------- |
+| `v0.1.0` | M1: baseline report | [Phase 1 · Measure first](https://github.com/dileepadev/verity-rag/issues/8) |
+| `v0.5.0` | M2: quality targets | [Phase 2 · Make it good](https://github.com/dileepadev/verity-rag/issues/15) |
+| `v1.0.0` | M3: deployed v1.0   | [Phase 3 · Make it real](https://github.com/dileepadev/verity-rag/issues/24) |
 
 ## What Else Is Versioned
 
-The software version is separate from the other versioned parts of Verity. A release note names the version of each one it was measured with.
+The software version is separate from the other versioned parts of Verity RAG. A release note names the version of each one it was measured with.
 
 | Item              | Scheme                                       | Where                                   |
 | ----------------- | -------------------------------------------- | --------------------------------------- |
 | Golden set        | `golden_v0`, `golden_v1`, `golden_v2`, ...   | `evals/datasets/` and its datasheet     |
-| Prompts           | Versioned files, reviewed like code          | `src/verity/generation/prompts/`        |
+| Prompts           | Versioned files, reviewed like code          | `src/verity_rag/generation/prompts/`    |
 | Index             | `chunker_version` and `embedding_model`      | Stored on every chunk row               |
 | Experiments       | `E0` ... `E9`                                | `configs/experiments/`                  |
 | Eval runs         | Date + git SHA + config hash                 | `evals/reports/`                        |
@@ -113,4 +113,4 @@ git log v0.1.0..v0.5.0
 
 ## Questions or Issues?
 
-If you have questions about the versioning strategy or encounter version-related problems, feel free to open an issue on the [GitHub repository](https://github.com/dileepadev/verity/issues).
+If you have questions about the versioning strategy or encounter version-related problems, feel free to open an issue on the [GitHub repository](https://github.com/dileepadev/verity-rag/issues).

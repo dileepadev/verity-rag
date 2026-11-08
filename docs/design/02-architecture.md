@@ -1,12 +1,12 @@
-# Verity design: Architecture
+# Verity RAG design: Architecture
 
-Part of the [Verity design](../design.md). Section numbers (§) match the index and the GitHub issues.
+Part of the [Verity RAG design](../design.md). Section numbers (§) match the index and the GitHub issues.
 
 ---
 
 ## 6. Solution overview
 
-Verity has four parts.
+Verity RAG has four parts.
 
 1. **Ingestion pipeline (offline).** Fetches documents, parses them (including OCR and tables), splits them into chunks that follow the document's structure, and adds a short context header to each chunk ("Employment Act 2019 > Part III > Section 12: Overtime"). It then builds two indexes, vector and keyword.
 2. **Query pipeline (online).** Rewrites the question for search, runs both searches, merges the results, reranks them, and builds a compact context. It asks the LLM to answer only from that context with citations, checks each sentence against its cited source, and then either answers or abstains.
@@ -25,7 +25,7 @@ The core idea: **you prove every design choice with a measurement.** Each techni
 flowchart LR
     user["User<br/>browser or phone"]
     web["Web app<br/>Next.js on Vercel"]
-    api["Verity API<br/>FastAPI on Cloud Run<br/>local embedding and rerank models"]
+    api["Verity RAG API<br/>FastAPI on Cloud Run<br/>local embedding and rerank models"]
     db[("PostgreSQL<br/>pgvector + full-text")]
     store[("Object storage<br/>PDFs and page images")]
     llm["LLM API<br/>OpenAI-compatible"]
@@ -66,7 +66,7 @@ flowchart TD
 sequenceDiagram
     autonumber
     participant U as User
-    participant API as Verity API
+    participant API as Verity RAG API
     participant R as Retriever
     participant RR as Reranker
     participant L as LLM
@@ -117,7 +117,7 @@ flowchart LR
         WEB["Next.js web app"]
     end
     subgraph GCP["Google Cloud"]
-        RUNAPI["Cloud Run service<br/>verity-api"]
+        RUNAPI["Cloud Run service<br/>verity-rag-api"]
         SM["Secret Manager"]
     end
     subgraph Supabase

@@ -1,6 +1,6 @@
-# Verity design: Decisions, deliverables and agents
+# Verity RAG design: Decisions, deliverables and agents
 
-Part of the [Verity design](../design.md). Section numbers (§) match the index and the GitHub issues.
+Part of the [Verity RAG design](../design.md). Section numbers (§) match the index and the GitHub issues.
 
 ---
 

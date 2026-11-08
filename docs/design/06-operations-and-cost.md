@@ -1,6 +1,6 @@
-# Verity design: Operations, scaling and cost
+# Verity RAG design: Operations, scaling and cost
 
-Part of the [Verity design](../design.md). Section numbers (§) match the index and the GitHub issues.
+Part of the [Verity RAG design](../design.md). Section numbers (§) match the index and the GitHub issues.
 
 ---
 
@@ -74,7 +74,7 @@ In order: smaller context via better reranking → lower reasoning effort → a 
 
 ## 17. Cost model
 
-Verity runs on free plans only. **Expected total: $0.**
+Verity RAG runs on free plans only. **Expected total: $0.**
 
 | Service | Used for | Plan | Free limits | Cost |
 | --- | --- | --- | --- | --- |

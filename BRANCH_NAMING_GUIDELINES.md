@@ -9,7 +9,7 @@ When creating a new branch, please follow this naming convention to maintain con
 ```
 
 - `<type>`: one of the types below (the same types as the [Commit Message Guidelines](COMMIT_MESSAGE_GUIDELINES.md)).
-- `<issue-number>`: the GitHub issue the branch works on. Every task in Verity starts from an issue.
+- `<issue-number>`: the GitHub issue the branch works on. Every task in Verity RAG starts from an issue.
 - `<short-slug>`: two to four lowercase words separated by hyphens.
 
 ## Protected Branches

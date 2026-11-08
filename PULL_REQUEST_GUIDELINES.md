@@ -23,7 +23,7 @@ The pull request title should follow the format:
   - `ci`: GitHub Actions workflows, the eval gate, deploy pipelines.
   - `chore`: Routine tasks, maintenance, or tooling changes.
 
-- `<scope>`: The part of Verity the change affects (e.g., `ingest`, `retrieval`, `generation`, `api`, `web`, `evals`). The full list is in the [Commit Message Guidelines](COMMIT_MESSAGE_GUIDELINES.md#scope).
+- `<scope>`: The part of Verity RAG the change affects (e.g., `ingest`, `retrieval`, `generation`, `api`, `web`, `evals`). The full list is in the [Commit Message Guidelines](COMMIT_MESSAGE_GUIDELINES.md#scope).
 
 - `<message>`: A short, clear, and concise description of the changes, in the imperative mood with a capital first letter.
 

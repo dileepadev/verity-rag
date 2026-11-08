@@ -1,6 +1,6 @@
-# Verity design: Problem and requirements
+# Verity RAG design: Problem and requirements
 
-Part of the [Verity design](../design.md). Section numbers (§) match the index and the GitHub issues.
+Part of the [Verity RAG design](../design.md). Section numbers (§) match the index and the GitHub issues.
 
 ---
 

@@ -1,6 +1,6 @@
-# Verity design: Appendices
+# Verity RAG design: Appendices
 
-Part of the [Verity design](../design.md). Section numbers (§) match the index and the GitHub issues.
+Part of the [Verity RAG design](../design.md). Section numbers (§) match the index and the GitHub issues.
 
 ---
 
@@ -76,9 +76,9 @@ name: evals
 on:
   pull_request:
     paths:
-      - "src/verity/retrieval/**"
-      - "src/verity/generation/**"
-      - "src/verity/verification/**"
+      - "src/verity_rag/retrieval/**"
+      - "src/verity_rag/generation/**"
+      - "src/verity_rag/verification/**"
       - "configs/**"
       - "evals/**"
 jobs:
@@ -136,7 +136,7 @@ LIMIT 50;
 ### Appendix F: `.env.example`
 
 ```bash
-DATABASE_URL=postgresql://verity_app:***@localhost:5432/verity
+DATABASE_URL=postgresql://verity_rag_app:***@localhost:5432/verity_rag
 GROQ_API_KEY=              # free plan
 DAILY_REQUEST_LIMIT=30     # generated answers per day; then search-only mode (§17.2)
 GENERATION_ENABLED=true    # false = search-only mode

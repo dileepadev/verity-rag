@@ -12,11 +12,11 @@ assignees: "dileepadev"
 
 ### ❓ Question
 
-<!-- [REQUIRED] The question you asked Verity. -->
+<!-- [REQUIRED] The question you asked Verity RAG. -->
 
-### 💬 Verity's Answer
+### 💬 Verity RAG's Answer
 
-<!-- [REQUIRED] What Verity answered, including the citations it showed (e.g., [S2] Employment Act, p. 14). Paste or summarize. -->
+<!-- [REQUIRED] What Verity RAG answered, including the citations it showed (e.g., [S2] Employment Act, p. 14). Paste or summarize. -->
 
 ### ✅ Expected Answer
 
@@ -24,7 +24,7 @@ assignees: "dileepadev"
 
 ### 📄 Evidence
 
-<!-- [REQUIRED if you know it] Where the documents answer the question. If the documents don't answer it, say so: Verity should have refused. -->
+<!-- [REQUIRED if you know it] Where the documents answer the question. If the documents don't answer it, say so: Verity RAG should have refused. -->
 
 <!-- example:
 - Document: Employment Act 2019 (as amended 2024)

@@ -12,7 +12,7 @@ These standards apply to everything in this repository. The project-specific des
 - [ ] **Semantic versioning tags** + GitHub Releases whose notes include eval numbers (`v0.1.0` baseline → `v1.0.0` launch; [VERSIONING.md](../VERSIONING.md)).
 - [ ] `CHANGELOG.md`; PR template with an **"Eval impact"** section; issue templates.
 - [ ] Branch protection on `main` (CI must pass). Dependabot and CodeQL enabled.
-- [ ] Work is tracked in GitHub issues: each phase is a sub-issue of [#1](https://github.com/dileepadev/verity/issues/1), with its tasks as sub-issues.
+- [ ] Work is tracked in GitHub issues: each phase is a sub-issue of [#1](https://github.com/dileepadev/verity-rag/issues/1), with its tasks as sub-issues.
 
 ## 2. Code quality
 

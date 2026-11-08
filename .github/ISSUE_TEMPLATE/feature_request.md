@@ -14,7 +14,7 @@ assignees: "dileepadev"
 
 ### 🧩 Component
 
-<!-- [REQUIRED] Tick the parts of Verity this affects. -->
+<!-- [REQUIRED] Tick the parts of Verity RAG this affects. -->
 
 - [ ] Corpus / ingestion
 - [ ] Retrieval

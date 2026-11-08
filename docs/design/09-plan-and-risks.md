@@ -1,21 +1,21 @@
-# Verity design: Implementation plan and risks
+# Verity RAG design: Implementation plan and risks
 
-Part of the [Verity design](../design.md). Section numbers (§) match the index and the GitHub issues.
+Part of the [Verity RAG design](../design.md). Section numbers (§) match the index and the GitHub issues.
 
 ---
 
 ## 22. Implementation plan (phases and milestones)
 
-The plan lives in GitHub issues: [#1](https://github.com/dileepadev/verity/issues/1) lists the phases, and each phase issue lists its tasks as sub-issues. Work through the phases in order; inside a phase, do `priority: must` issues first, then `should`, then `could`.
+The plan lives in GitHub issues: [#1](https://github.com/dileepadev/verity-rag/issues/1) lists the phases, and each phase issue lists its tasks as sub-issues. Work through the phases in order; inside a phase, do `priority: must` issues first, then `should`, then `could`.
 
 | Phase | Goal | Milestone and release |
 | --- | --- | --- |
-| [0 · Project setup](https://github.com/dileepadev/verity/issues/2) | Repo, tooling, corpus and 20 seed questions | — |
-| [1 · Measure first](https://github.com/dileepadev/verity/issues/8) | A naive baseline (E0) and an eval harness that measures it, before any optimization | M1: baseline report · `v0.1.0` |
-| [2 · Make it good](https://github.com/dileepadev/verity/issues/15) | Ablations E1–E8, a calibrated judge, tuned abstention and a CI eval gate | M2: quality targets · `v0.5.0` |
-| [3 · Make it real](https://github.com/dileepadev/verity/issues/24) | API, web UI, tracing, deployment, security docs and a results-first README | M3: deployed v1.0 · `v1.0.0` |
-| [4 · Polish and publish](https://github.com/dileepadev/verity/issues/32) | Agentic retrieval (E9), real users and the public write-up | — |
-| [Backlog](https://github.com/dileepadev/verity/issues/39) | Stretch goals ([§23](#23-stretch-goals)), only after v1.0 | — |
+| [0 · Project setup](https://github.com/dileepadev/verity-rag/issues/2) | Repo, tooling, corpus and 20 seed questions | — |
+| [1 · Measure first](https://github.com/dileepadev/verity-rag/issues/8) | A naive baseline (E0) and an eval harness that measures it, before any optimization | M1: baseline report · `v0.1.0` |
+| [2 · Make it good](https://github.com/dileepadev/verity-rag/issues/15) | Ablations E1–E8, a calibrated judge, tuned abstention and a CI eval gate | M2: quality targets · `v0.5.0` |
+| [3 · Make it real](https://github.com/dileepadev/verity-rag/issues/24) | API, web UI, tracing, deployment, security docs and a results-first README | M3: deployed v1.0 · `v1.0.0` |
+| [4 · Polish and publish](https://github.com/dileepadev/verity-rag/issues/32) | Agentic retrieval (E9), real users and the public write-up | — |
+| [Backlog](https://github.com/dileepadev/verity-rag/issues/39) | Stretch goals ([§23](#23-stretch-goals)), only after v1.0 | — |
 
 A milestone is reached when its phase's `must` issues are closed and the real numbers are reported, even if some targets are missed. Build the UI only after the quality targets are measured, and ship it plain first.
 
@@ -25,7 +25,7 @@ A milestone is reached when its phase's `must` issues are closed and the real nu
 
 In priority order:
 
-1. **An MCP server for Verity:** expose `search_regulations` and `get_passage` as tools so Claude Desktop, IDEs or other agents can query your corpus. This adds MCP to this repo.
+1. **An MCP server for Verity RAG:** expose `search_regulations` and `get_passage` as tools so Claude Desktop, IDEs or other agents can query your corpus. This adds MCP to this repo.
 2. **Retrieval router:** after E9, route multi-hop questions to agentic mode and simple ones to the fixed pipeline. Measure the cost saved at equal quality.
 3. **Multilingual and code-mixed questions** in your local language, with a separate metric breakdown.
 4. **"As-of date" answers** across amendment history.

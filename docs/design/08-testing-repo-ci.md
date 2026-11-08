@@ -1,6 +1,6 @@
-# Verity design: Testing, repository and CI/CD
+# Verity RAG design: Testing, repository and CI/CD
 
-Part of the [Verity design](../design.md). Section numbers (§) match the index and the GitHub issues.
+Part of the [Verity RAG design](../design.md). Section numbers (§) match the index and the GitHub issues.
 
 ---
 
@@ -15,14 +15,14 @@ Part of the [Verity design](../design.md). Section numbers (§) match the index 
 | Evals | Quality metrics (separate, cost-incurring) | `make eval` |
 | Security | Injection set; dependency scans | Eval suite; `pip-audit` |
 
-Coverage target: at least 80% on `src/verity/{retrieval,generation,verification,ingest}`.
+Coverage target: at least 80% on `src/verity_rag/{retrieval,generation,verification,ingest}`.
 
 ---
 
 ## 20. Repository structure
 
 ```text
-verity/
+verity-rag/
 ├── README.md                     # see §26 blueprint
 ├── AGENTS.md  CLAUDE.md          # agent instructions (§27)
 ├── CONTRIBUTING.md  SECURITY.md  CHANGELOG.md  VERSIONING.md  LICENSE  …
@@ -43,7 +43,7 @@ verity/
 │   ├── default.yaml              # provider URL, models, reasoning effort, k values, thresholds, daily limits
 │   └── experiments/E0.yaml … E9.yaml
 ├── corpus/sources.yaml
-├── src/verity/
+├── src/verity_rag/
 │   ├── config.py
 │   ├── llm/        (client.py, cache.py, usage.py)
 │   ├── ingest/     (fetch.py, parse.py, chunk.py, enrich.py, embed.py, index.py, pipeline.py, report.py)

@@ -1,6 +1,6 @@
-# Verity design: Component design
+# Verity RAG design: Component design
 
-Part of the [Verity design](../design.md). Section numbers (§) match the index and the GitHub issues.
+Part of the [Verity RAG design](../design.md). Section numbers (§) match the index and the GitHub issues.
 
 ---
 
@@ -122,7 +122,7 @@ Part of the [Verity design](../design.md). Section numbers (§) match the index 
 
 ### 8.11 Observability (summary; details in §13)
 
-- **OpenTelemetry spans:** `verity.request` → `guard`, `rewrite`, `retrieve.dense`, `retrieve.keyword`, `fuse`, `rerank`, `assemble_context`, `generate`, `verify`.
+- **OpenTelemetry spans:** `verity_rag.request` → `guard`, `rewrite`, `retrieve.dense`, `retrieve.keyword`, `fuse`, `rerank`, `assemble_context`, `generate`, `verify`.
 - LLM spans follow the OpenTelemetry GenAI semantic conventions (`gen_ai.request.model`, `gen_ai.usage.input_tokens`, `gen_ai.usage.output_tokens`). Traces are exported via OTLP to Langfuse.
 - Tokens per request come from `usage`. Requests and tokens per model are counted per day, to stay inside the free limits.
 

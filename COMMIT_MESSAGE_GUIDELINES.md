@@ -1,6 +1,6 @@
 # Commit Message Guidelines
 
-A good commit message should be descriptive and provide context about the changes made. This helps improve code review, debugging, and long-term maintainability. Verity uses [Conventional Commits](https://www.conventionalcommits.org) with the conventions below.
+A good commit message should be descriptive and provide context about the changes made. This helps improve code review, debugging, and long-term maintainability. Verity RAG uses [Conventional Commits](https://www.conventionalcommits.org) with the conventions below.
 
 Table of Contents:
 
@@ -51,7 +51,7 @@ The `<type>` field indicates the nature of the changes made in the commit. Use o
 
 ### `<scope>`
 
-The `<scope>` is optional, but recommended. It names the part of Verity the commit affects. Scopes follow the repository layout:
+The `<scope>` is optional, but recommended. It names the part of Verity RAG the commit affects. Scopes follow the repository layout:
 
 | Scope         | Description                                                          |
 |---------------|----------------------------------------------------------------------|
@@ -90,7 +90,7 @@ Writing Tips:
 
 ### `<optional issue references>`
 
-Optionally link the commit to relevant issues using GitHub keywords such as `fixes`, `closes`, `resolves`, or `refs`. Multiple issues can be referenced by separating them with commas. Every task in Verity has a GitHub issue, so most commits should carry at least a `refs #<issue>`.
+Optionally link the commit to relevant issues using GitHub keywords such as `fixes`, `closes`, `resolves`, or `refs`. Multiple issues can be referenced by separating them with commas. Every task in Verity RAG has a GitHub issue, so most commits should carry at least a `refs #<issue>`.
 
 ### `<optional PR reference>`
 

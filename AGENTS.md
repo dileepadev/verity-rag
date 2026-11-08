@@ -1,4 +1,4 @@
-# Verity: agent instructions
+# Verity RAG: agent instructions
 
 Before starting a task, read [`docs/engineering-standards.md`](docs/engineering-standards.md) and the design index [`docs/design.md`](docs/design.md), then the section files in [`docs/design/`](docs/design/) that the issue references (issues cite sections as `docs/design.md §N`; the index maps each § to its file). The work order is in the GitHub issues: phases under #1, `priority: must` first ([design §22](docs/design/09-plan-and-risks.md#22-implementation-plan-phases-and-milestones)).
 
