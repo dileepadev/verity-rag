@@ -26,3 +26,13 @@ Entry template:
 - Caught by: the maintainer's review; markdownlint; a link-check script.
 - Verified: markdownlint reports 0 issues; all relative links and anchors resolve.
 - Lesson: settle the budget and scope before designing; use one lint config for the editor, the CLI and CI; check links after moving files.
+
+## 2026-11-08: Scaffold the repository and tooling (#4)
+
+- Asked: set up the `uv` project, ruff, mypy, pytest, pre-commit, the `Makefile`, Postgres in Docker and CI.
+- Agent got wrong:
+  - The `trailing-whitespace` hook removed two-space Markdown line breaks from `CONTRIBUTING.md` and `VERSIONING.md`.
+  - The first `make lint` skipped ruff and mypy, because the new files weren't staged and pre-commit only sees tracked files.
+- Caught by: reading the hook's diff before committing; the "(no files to check)" lines in the pre-commit output.
+- Verified: both files restored; the hook now uses `--markdown-linebreak-ext=md`; `make lint` (10 checks on all files) and `make test` pass.
+- Lesson: review every file a formatter changes; stage new files before running pre-commit on them.

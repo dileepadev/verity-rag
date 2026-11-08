@@ -5,7 +5,7 @@ Thank you for your interest in contributing to [Verity RAG](https://github.com/d
 Verity RAG is evaluation-driven: every change to the pipeline has to show its effect on the golden set. Read [docs/design.md](docs/design.md) and [docs/engineering-standards.md](docs/engineering-standards.md) before starting a larger change.
 
 > [!Note]
-> Verity RAG is in early development. The Python tooling (`uv`, `make` targets, CI) is being set up in [#4](https://github.com/dileepadev/verity-rag/issues/4); until it lands, some commands below won't work yet.
+> Verity RAG is in early development. `make setup`, `make up`, `make lint` and `make test` work now; `make ingest`, `make ask`, `make eval`, `make report` and `make run` arrive with their issues ([#10](https://github.com/dileepadev/verity-rag/issues/10), [#11](https://github.com/dileepadev/verity-rag/issues/11), [#13](https://github.com/dileepadev/verity-rag/issues/13), [#25](https://github.com/dileepadev/verity-rag/issues/25)).
 
 ## Getting Started
 

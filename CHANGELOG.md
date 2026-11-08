@@ -30,6 +30,7 @@ Unreleased changes go here.
   - [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md), [CONTRIBUTING.md](./CONTRIBUTING.md), [SECURITY.md](./SECURITY.md)
   - [CHANGELOG.md](./CHANGELOG.md), [VERSIONING.md](./VERSIONING.md), [TODO.md](./TODO.md), [LICENSE](./LICENSE)
 - Markdown lint configuration: [.markdownlint.jsonc](./.markdownlint.jsonc) (refs #3)
+- Project scaffold: `uv` project with the `verity_rag` package, ruff, mypy, pytest, pre-commit, `Makefile`, `docker-compose.yml` (Postgres + pgvector), `.env.example`, the CI workflow and Dependabot (refs #4)
 
 <!-- Release entry template:
 
