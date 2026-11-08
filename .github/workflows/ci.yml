@@ -1,0 +1,33 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - uses: astral-sh/setup-uv@v10.3.3
+        with:
+          version: "0.11.32" # keep in line with the maintainer's local uv
+          enable-cache: true
+
+      - run: uv sync --locked
+
+      - uses: actions/cache@v6.1.0
+        with:
+          path: ~/.cache/pre-commit
+          key: pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
+
+      - name: Lint (ruff, mypy, gitleaks, markdownlint)
+        run: uv run pre-commit run --all-files --show-diff-on-failure
+
+      - name: Test
+        run: uv run pytest

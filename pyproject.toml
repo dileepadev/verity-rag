@@ -1,0 +1,42 @@
+[project]
+name = "verity-rag"
+version = "0.1.0"
+description = "Evaluation-driven question answering over long official documents, with page-level citations and abstention."
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "dileepadev", email = "251038784+dileepadev@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "mypy>=2.4.1",
+    "pre-commit>=4.7.0",
+    "pytest>=9.2.0",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.17.4",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.32,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+# E/W pycodestyle, F pyflakes, I isort, B bugbear, UP pyupgrade, SIM simplify,
+# N naming, RUF ruff-specific, T20 no print() (use the logger, see AGENTS.md)
+select = ["E", "W", "F", "I", "B", "UP", "SIM", "N", "RUF", "T20"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src", "tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --cov=verity_rag --cov-report=term-missing"
