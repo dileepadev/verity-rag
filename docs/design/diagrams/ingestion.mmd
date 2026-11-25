@@ -1,6 +1,7 @@
 flowchart TD
     A["sources.yaml<br/>URL, title, version, effective date, license"] --> B["Fetch and hash<br/>skip unchanged files"]
-    B --> C["Parse with Docling<br/>layout, tables, OCR"]
+    B --> C["Parse with Docling<br/>layout, tables, OCR, page images"]
+    C --> S[("Object storage<br/>PDFs and page images")]
     C --> D["Normalize<br/>pages, sections, bounding boxes"]
     D --> E["Structure-aware chunking<br/>sections kept, tables whole"]
     E --> F["Contextual header<br/>title, version, section path"]

@@ -16,6 +16,17 @@ Entry template:
 
 ---
 
+## 2026-11-25: Review of the architecture diagrams before merge (#48)
+
+- Asked: review the branch, including the diagrams, and fix every issue before it merges, so no wrong content reaches `main`.
+- Agent got wrong:
+  - The PR #52 description, written without reading the diff, said the Mermaid blocks were kept; the branch replaces them with GIFs.
+  - Four diagrams contradicted the design. Query showed one of the three abstention gates (§8.7) and implied unsupported sentences are dropped. Evaluation said every golden question runs in CI (CI runs the dev split and the smoke set, §12.5). Ingestion said everything is stored in PostgreSQL (page images go to object storage). Deployment left the verifier out of the LLM calls.
+  - The first fix only added a note under the query diagram, which left the wrong images in place.
+- Caught by: comparing the PR description with the diff, and each diagram's labels and captions with the design sections they illustrate; the maintainer rejected the note-only fix.
+- Verified: the original generator scripts were gone, so a new generator parses the SVGs and rebuilds the frames; with no edits applied it re-renders all five original SVGs pixel-identical. The four corrected diagrams were rendered and every hold frame inspected; each GIF decodes frame by frame to its source render, loops forever and is 205 to 307 KB; all 193 MP4 frames decode at their planned times, with seven chapters, and the file is 446 KB (2 min 31 sec); the system context files are unchanged; the Mermaid sources and alt text match the new diagrams; no other file refers to the old wording; `make lint test` passes. The Mermaid sources were not rendered, because running mermaid-cli was not permitted in the session.
+- Lesson: write a PR description from the diff, not from memory; check a diagram against the design text it illustrates, not only against its own source; fix wrong content at the source instead of annotating around it; keep the tools that generate binary assets. The generator now lives outside the repository in `verity-rag-diagram-tools/`, next to the repository, with a README.
+
 ## 2026-11-17: Architecture walkthrough video (#48)
 
 - Asked: make an MP4 from the maintainer's updated diagrams, with dark chapter titles and on-screen explanations; keep generation scripts outside the repository.

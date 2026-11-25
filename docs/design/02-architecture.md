@@ -19,9 +19,9 @@ The core idea: **you prove every design choice with a measurement.** Each techni
 
 ## 7. Architecture
 
-Each diagram is an animated GIF that loops automatically, with a caption for each numbered step. Next to it is a static SVG with the same steps written out, for reading at your own pace, and the original Mermaid source. Numbered stages explain the design rather than exact execution timing; branches show alternative outcomes. These images illustrate the planned architecture, not implementation status or live activity.
+Each diagram is an animated GIF that loops automatically, with a caption for each numbered step. Below it are links to a static SVG with the same steps written out, for reading at your own pace, and to the Mermaid source. Numbered stages explain the design rather than exact execution timing; branches show alternative outcomes. These images illustrate the planned architecture, not implementation status or live activity.
 
-[Watch the architecture walkthrough (MP4, 2 min 26 sec)](videos/architecture-walkthrough.mp4). This silent video follows the five animated diagrams in order, with chapter titles and on-screen step captions. Pause or seek to read at your own pace.
+[Watch the architecture walkthrough (MP4, 2 min 31 sec)](videos/architecture-walkthrough.mp4). This silent video follows the five animated diagrams in order, with chapter titles and on-screen step captions. Pause or seek to read at your own pace.
 
 ### 7.1 System context
 
@@ -31,19 +31,21 @@ Each diagram is an animated GIF that loops automatically, with a caption for eac
 
 ### 7.2 Ingestion pipeline
 
-![Ingestion pipeline. sources.yaml is fetched and hashed, parsed with Docling, normalized, chunked by structure and given a contextual header. Chunks are embedded locally and full-text indexed, stored in PostgreSQL, and summarized in an ingestion report.](diagrams/ingestion.gif)
+![Ingestion pipeline. sources.yaml is fetched and hashed, then parsed with Docling, which also renders page images; the PDFs and page images go to object storage. Documents are normalized, chunked by structure and given a contextual header. Chunks are embedded locally and full-text indexed, stored in PostgreSQL, and summarized in an ingestion report.](diagrams/ingestion.gif)
 
 [Static SVG with the steps written out](diagrams/ingestion.svg) · [Mermaid source](diagrams/ingestion.mmd)
 
 ### 7.3 Query pipeline
 
-![Query pipeline. Guards, query rewrite, parallel dense and keyword search, reciprocal rank fusion and reranking, then a check on the top score. Enough evidence leads to a grounded prompt, a streamed LLM answer and per-sentence verification; otherwise the API abstains and shows the closest sections.](diagrams/query.gif)
+![Query pipeline. Guards, query rewrite, parallel dense and keyword search, reciprocal rank fusion and reranking. Gate 1 checks the rerank scores. With enough evidence, a grounded prompt goes to the LLM, which streams an answer with citations or replies NO_ANSWER (gate 2). A verifier checks each sentence against its source (gate 3). The answer is returned with each sentence marked as supported or not; if any gate fails, the API abstains and shows the closest sections.](diagrams/query.gif)
 
 [Static SVG with the steps written out](diagrams/query.svg) · [Mermaid source](diagrams/query.mmd)
 
+The three abstention gates are described in [§8.7](03-components.md#87-verification-and-abstention-three-gates).
+
 ### 7.4 Evaluation loop
 
-![Evaluation loop. The golden set and pipeline config feed the eval runner, which produces metrics. Meeting the thresholds passes CI with a PR comment; missing them fails CI and blocks the merge. Production feedback goes to a weekly triage that feeds the golden set.](diagrams/evaluation.gif)
+![Evaluation loop. The golden set and pipeline config feed the eval runner, which in CI runs the dev split and the smoke set, and the test split once per release. It produces metrics. Meeting the thresholds passes CI with a PR comment; missing them fails CI and blocks the merge. Production feedback goes to a weekly triage that feeds the golden set.](diagrams/evaluation.gif)
 
 [Static SVG with the steps written out](diagrams/evaluation.svg) · [Mermaid source](diagrams/evaluation.mmd)
 

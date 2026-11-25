@@ -1,5 +1,5 @@
 flowchart LR
-    G["Golden set<br/>dev and test splits"] --> RUN["Eval runner"]
+    G["Golden set<br/>dev and test splits"] --> RUN["Eval runner<br/>CI: dev split and smoke set<br/>release: test split"]
     CFG["Pipeline config<br/>git SHA and config hash"] --> RUN
     RUN --> M["Metrics<br/>retrieval, faithfulness,<br/>abstention, tokens, latency"]
     M --> T{"Meets thresholds?"}
