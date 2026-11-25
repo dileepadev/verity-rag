@@ -1,0 +1,19 @@
+services:
+  db:
+    image: pgvector/pgvector:0.8.7-pg17
+    environment:
+      POSTGRES_DB: verity_rag
+      POSTGRES_USER: verity_rag
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-verity_rag} # local development only
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U verity_rag -d verity_rag"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata:
