@@ -44,7 +44,9 @@ Then wait. Approval covers only that commit and push; ask again for the next one
 
 ## Build log
 
-Notable sessions go in `docs/build-log.md`:
+Notable sessions go in `docs/build-log.md`, newest first: add each new entry above the existing ones, right after the horizontal rule below the template in that file.
+
+Entry format:
 
 ```markdown
 ## YYYY-MM-DD: <task>

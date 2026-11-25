@@ -1,0 +1,22 @@
+flowchart LR
+    subgraph Vercel
+        WEB["Next.js web app"]
+    end
+    subgraph GCP["Google Cloud"]
+        RUNAPI["Cloud Run service<br/>verity-rag-api"]
+        SM["Secret Manager"]
+    end
+    subgraph Supabase
+        PG[("Postgres + pgvector")]
+        ST[("Storage<br/>PDFs and page images")]
+    end
+    LF["Langfuse Cloud"]
+    LLM["LLM API<br/>OpenAI-compatible"]
+    WEB --> RUNAPI
+    RUNAPI --> PG
+    RUNAPI --> ST
+    RUNAPI --> LLM
+    INGEST["make ingest<br/>run by the maintainer"] --> PG
+    INGEST --> ST
+    SM -.-> RUNAPI
+    RUNAPI --> LF

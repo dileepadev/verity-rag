@@ -1,0 +1,39 @@
+sequenceDiagram
+    autonumber
+    participant U as User
+    participant API as Verity RAG API
+    participant R as Retriever
+    participant RR as Reranker
+    participant L as LLM
+    participant V as Verifier
+    U->>API: Ask a question
+    API->>API: Guards - rate limit, length, daily request limit
+    API->>L: Rewrite query with a small model
+    par Hybrid retrieval
+        API->>R: Dense search, top 50
+    and
+        API->>R: Keyword search, top 50
+    end
+    R-->>API: Candidates
+    API->>API: Reciprocal Rank Fusion
+    API->>RR: Rerank fused top 50
+    RR-->>API: Scored passages
+    alt Gate 1 - top score or passage count below threshold
+        API-->>U: No answer, plus the closest sections
+    else Enough evidence
+        API->>L: Grounded prompt with sources S1 to S8
+        alt Gate 2 - the model replies NO_ANSWER
+            L-->>API: NO_ANSWER
+            API-->>U: No answer, plus the closest sections
+        else The model answers
+            L-->>API: Streamed answer with S-number citations
+            API-->>U: Stream tokens
+            API->>V: Check each sentence against its cited source
+            V-->>API: Supported, partial or unsupported per sentence
+            alt Gate 3 - more than 30 percent unsupported
+                API-->>U: Replace the answer with no answer, plus the closest sections
+            else 30 percent or fewer unsupported
+                API-->>U: Final answer, each sentence marked supported or not
+            end
+        end
+    end

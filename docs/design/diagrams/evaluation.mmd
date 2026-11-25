@@ -1,0 +1,9 @@
+flowchart LR
+    G["Golden set<br/>dev and test splits"] --> RUN["Eval runner<br/>CI: dev split and smoke set<br/>release: test split"]
+    CFG["Pipeline config<br/>git SHA and config hash"] --> RUN
+    RUN --> M["Metrics<br/>retrieval, faithfulness,<br/>abstention, tokens, latency"]
+    M --> T{"Meets thresholds?"}
+    T -->|yes| PASS["CI passes<br/>PR comment with deltas"]
+    T -->|no| FAIL["CI fails<br/>merge blocked"]
+    PROD["Production feedback<br/>thumbs down and traces"] --> TRIAGE["Weekly triage"]
+    TRIAGE --> G

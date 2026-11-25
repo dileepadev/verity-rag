@@ -51,7 +51,7 @@ OpenTelemetry with the GenAI semantic conventions → Langfuse; one trace per re
 
 ## 7. Documentation as code
 
-- The design is the architecture document: [design.md](design.md), with Mermaid diagrams in [§7](design/02-architecture.md#7-architecture).
+- The design is the architecture document: [design.md](design.md), with animated diagrams in [§7](design/02-architecture.md#7-architecture); their Mermaid source is in [design/diagrams/](design/diagrams/).
 - `docs/adr/` in MADR format: one short file per new or changed decision. The initial decisions are in [design §25](design/10-decisions-and-deliverables.md#25-architecture-decision-records).
 - `docs/runbook.md` for operations; known limitations go in the README.
 - `docs/build-log.md` (see `AGENTS.md`).
