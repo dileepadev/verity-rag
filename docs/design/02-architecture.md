@@ -19,122 +19,39 @@ The core idea: **you prove every design choice with a measurement.** Each techni
 
 ## 7. Architecture
 
+Each diagram is an animated GIF that loops automatically, with a caption for each numbered step. Next to it is a static SVG with the same steps written out, for reading at your own pace, and the original Mermaid source. Numbered stages explain the design rather than exact execution timing; branches show alternative outcomes. These images illustrate the planned architecture, not implementation status or live activity.
+
+[Watch the architecture walkthrough (MP4, 2 min 26 sec)](videos/architecture-walkthrough.mp4). This silent video follows the five animated diagrams in order, with chapter titles and on-screen step captions. Pause or seek to read at your own pace.
+
 ### 7.1 System context
 
-```mermaid
-flowchart LR
-    user["User<br/>browser or phone"]
-    web["Web app<br/>Next.js on Vercel"]
-    api["Verity RAG API<br/>FastAPI on Cloud Run<br/>local embedding and rerank models"]
-    db[("PostgreSQL<br/>pgvector + full-text")]
-    store[("Object storage<br/>PDFs and page images")]
-    llm["LLM API<br/>OpenAI-compatible"]
-    obs["Langfuse<br/>OpenTelemetry traces"]
-    ingest["Ingestion CLI<br/>make ingest, Docling,<br/>local embedding model"]
-    ci["GitHub Actions<br/>tests and eval gate"]
+![System context diagram. A user reaches the Next.js web app, which calls the Verity RAG API. The API uses PostgreSQL, object storage, an LLM API and Langfuse. An ingestion CLI fills PostgreSQL and object storage, and GitHub Actions deploys the API and runs evals.](diagrams/system-context.gif)
 
-    user --> web --> api
-    api --> db
-    api --> store
-    api --> llm
-    api --> obs
-    ingest --> store
-    ingest --> db
-    ci -->|deploys| api
-    ci -->|runs evals with| llm
-```
+[Static SVG with the steps written out](diagrams/system-context.svg) · [Mermaid source](diagrams/system-context.mmd)
 
 ### 7.2 Ingestion pipeline
 
-```mermaid
-flowchart TD
-    A["sources.yaml<br/>URL, title, version, effective date, license"] --> B["Fetch and hash<br/>skip unchanged files"]
-    B --> C["Parse with Docling<br/>layout, tables, OCR"]
-    C --> D["Normalize<br/>pages, sections, bounding boxes"]
-    D --> E["Structure-aware chunking<br/>sections kept, tables whole"]
-    E --> F["Contextual header<br/>title, version, section path"]
-    F --> G["Embed chunks locally<br/>open embedding model"]
-    F --> H["Full-text index<br/>tsvector"]
-    G --> I[("PostgreSQL")]
-    H --> I
-    I --> J["Ingestion report<br/>pages, OCR rate, tables, chunk stats"]
-```
+![Ingestion pipeline. sources.yaml is fetched and hashed, parsed with Docling, normalized, chunked by structure and given a contextual header. Chunks are embedded locally and full-text indexed, stored in PostgreSQL, and summarized in an ingestion report.](diagrams/ingestion.gif)
+
+[Static SVG with the steps written out](diagrams/ingestion.svg) · [Mermaid source](diagrams/ingestion.mmd)
 
 ### 7.3 Query pipeline
 
-```mermaid
-sequenceDiagram
-    autonumber
-    participant U as User
-    participant API as Verity RAG API
-    participant R as Retriever
-    participant RR as Reranker
-    participant L as LLM
-    participant V as Verifier
-    U->>API: Ask a question
-    API->>API: Guards - rate limit, length, daily request limit
-    API->>L: Rewrite query with a small model
-    par Hybrid retrieval
-        API->>R: Dense search, top 50
-    and
-        API->>R: Keyword search, top 50
-    end
-    R-->>API: Candidates
-    API->>API: Reciprocal Rank Fusion
-    API->>RR: Rerank fused top 50
-    RR-->>API: Scored passages
-    alt Top score below threshold
-        API-->>U: No answer, plus the closest sections
-    else Enough evidence
-        API->>L: Grounded prompt with sources S1 to S8
-        L-->>API: Streamed answer with S-number citations
-        API-->>U: Stream tokens
-        API->>V: Check each sentence against its cited source
-        V-->>API: Supported or unsupported per sentence
-        API-->>U: Final answer with verified citations
-    end
-```
+![Query pipeline. Guards, query rewrite, parallel dense and keyword search, reciprocal rank fusion and reranking, then a check on the top score. Enough evidence leads to a grounded prompt, a streamed LLM answer and per-sentence verification; otherwise the API abstains and shows the closest sections.](diagrams/query.gif)
+
+[Static SVG with the steps written out](diagrams/query.svg) · [Mermaid source](diagrams/query.mmd)
 
 ### 7.4 Evaluation loop
 
-```mermaid
-flowchart LR
-    G["Golden set<br/>dev and test splits"] --> RUN["Eval runner"]
-    CFG["Pipeline config<br/>git SHA and config hash"] --> RUN
-    RUN --> M["Metrics<br/>retrieval, faithfulness,<br/>abstention, tokens, latency"]
-    M --> T{"Meets thresholds?"}
-    T -->|yes| PASS["CI passes<br/>PR comment with deltas"]
-    T -->|no| FAIL["CI fails<br/>merge blocked"]
-    PROD["Production feedback<br/>thumbs down and traces"] --> TRIAGE["Weekly triage"]
-    TRIAGE --> G
-```
+![Evaluation loop. The golden set and pipeline config feed the eval runner, which produces metrics. Meeting the thresholds passes CI with a PR comment; missing them fails CI and blocks the merge. Production feedback goes to a weekly triage that feeds the golden set.](diagrams/evaluation.gif)
+
+[Static SVG with the steps written out](diagrams/evaluation.svg) · [Mermaid source](diagrams/evaluation.mmd)
 
 ### 7.5 Deployment
 
-```mermaid
-flowchart LR
-    subgraph Vercel
-        WEB["Next.js web app"]
-    end
-    subgraph GCP["Google Cloud"]
-        RUNAPI["Cloud Run service<br/>verity-rag-api"]
-        SM["Secret Manager"]
-    end
-    subgraph Supabase
-        PG[("Postgres + pgvector")]
-        ST[("Storage<br/>PDFs and page images")]
-    end
-    LF["Langfuse Cloud"]
-    LLM["LLM API<br/>OpenAI-compatible"]
-    WEB --> RUNAPI
-    RUNAPI --> PG
-    RUNAPI --> ST
-    RUNAPI --> LLM
-    INGEST["make ingest<br/>run by the maintainer"] --> PG
-    INGEST --> ST
-    SM -.-> RUNAPI
-    RUNAPI --> LF
-```
+![Deployment. The Next.js web app on Vercel calls the verity-rag-api Cloud Run service, which gets secrets from Secret Manager and uses Supabase Postgres with pgvector, Supabase Storage, an OpenAI-compatible LLM API and Langfuse Cloud. The maintainer runs make ingest from the command line to fill Postgres and Storage.](diagrams/deployment.gif)
+
+[Static SVG with the steps written out](diagrams/deployment.svg) · [Mermaid source](diagrams/deployment.mmd)
 
 **LLM provider:** the diagrams show a generic OpenAI-compatible LLM API. The current provider and models are set in `configs/` and listed in [§17.1](06-operations-and-cost.md#171-models), so changing provider doesn't change the architecture.
 

@@ -1,0 +1,20 @@
+flowchart LR
+    user["User<br/>browser or phone"]
+    web["Web app<br/>Next.js on Vercel"]
+    api["Verity RAG API<br/>FastAPI on Cloud Run<br/>local embedding and rerank models"]
+    db[("PostgreSQL<br/>pgvector + full-text")]
+    store[("Object storage<br/>PDFs and page images")]
+    llm["LLM API<br/>OpenAI-compatible"]
+    obs["Langfuse<br/>OpenTelemetry traces"]
+    ingest["Ingestion CLI<br/>make ingest, Docling,<br/>local embedding model"]
+    ci["GitHub Actions<br/>tests and eval gate"]
+
+    user --> web --> api
+    api --> db
+    api --> store
+    api --> llm
+    api --> obs
+    ingest --> store
+    ingest --> db
+    ci -->|deploys| api
+    ci -->|runs evals with| llm
